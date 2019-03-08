@@ -49,15 +49,17 @@ def parse_msg(*msg):
     for i in msg:
         if type(i) == int:
             types.append(typeint)
-            message = message + int_to_bytes(i)
+            message.extend(int_to_bytes(i))
         elif type(i) == float:
             types.append(typefloat)
-            message = message + float_to_bytes(i)
+            message.extend(float_to_bytes(i))
         elif type(i) == str:
             types.append(typestring)
-            message = message + string_to_bytes(i)
+            message.extend(string_to_bytes(i))
     types.append(0)
-    return add_null(types) + message
+    nulled = add_null(types)
+    nulled.extend(message)
+    return nulled
 
 
 def parse_address(st):
@@ -80,6 +82,3 @@ def parse_mess(address, *msg):
     address_bytes = parse_address(address)
     types = parse_msg(*msg)
     return address_bytes + types
-
-    # messaggio =
-print(parse_mess('/ciaociao', 1, 2, 3))
