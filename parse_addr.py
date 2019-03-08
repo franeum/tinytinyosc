@@ -17,6 +17,7 @@ def add_null(cs):
         return add_null(cs)
 
 
+# iterative version of the previous func
 """def add_null(cs):
     le = 4 - (len(cs) % 4)
     if le != 4:
@@ -72,10 +73,6 @@ def parse_address(st):
             is not present or it's not in the right place'''
     except TypeError as e:
         return e
-
-
-def parse_msgcontent(*msg):
-    pass
 
 
 def parse_mess(address, *msg):
