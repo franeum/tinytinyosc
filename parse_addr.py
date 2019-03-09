@@ -2,13 +2,7 @@ import re
 import struct
 
 
-comma = ord(',')
-typeint = ord('i')
-typefloat = ord('f')
-typestring = ord('s')
-
-
-# TODO: veryfing recursion opportunity
+# TODO: verifying recursion opportunity
 def add_null(cs):
     if len(cs) % 4 == 0:
         return cs
@@ -18,6 +12,7 @@ def add_null(cs):
 
 
 # iterative version of the previous func
+# see previous TODO
 """def add_null(cs):
     le = 4 - (len(cs) % 4)
     if le != 4:
@@ -44,23 +39,40 @@ def string_to_bytes(s):
     return add_null(conv)
 
 
+COMMA = ord(',')
+TYPE_INT = ord('i')
+TYPE_FLOAT = ord('f')
+TYPE_STRING = ord('s')
+
+tps = (int, float, str)
+tps_symbols = (TYPE_INT, TYPE_FLOAT, TYPE_STRING)
+ass = [x for x in zip(tps, tps_symbols)]
+print(ass)
+
+
 def parse_msg(*msg):
-    types = [comma]
+    types = [COMMA]
+    for atom in msg:
+        for rule, compare in ass:
+
+
+'''def parse_msg(*msg):
+    types = [COMMA]
     message = []
     for i in msg:
         if type(i) == int:
-            types.append(typeint)
+            types.append(TYPE_INT)
             message.extend(int_to_bytes(i))
         elif type(i) == float:
-            types.append(typefloat)
+            types.append(TYPE_FLOAT)
             message.extend(float_to_bytes(i))
         elif type(i) == str:
-            types.append(typestring)
+            types.append(TYPE_STRING)
             message.extend(string_to_bytes(i))
     types.append(0)
-    nulled = add_null(types)
-    nulled.extend(message)
-    return nulled
+    withnull_msg = add_null(types)
+    withnull_msg.extend(message)
+    return withnull_msg'''
 
 
 def parse_address(st):
@@ -75,7 +87,7 @@ def parse_address(st):
         return e
 
 
-def parse_mess(address, *msg):
+def parse_whole_mess(address, *msg):
     address_bytes = parse_address(address)
     types = parse_msg(*msg)
     return address_bytes + types
