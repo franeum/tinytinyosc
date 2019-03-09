@@ -75,13 +75,11 @@ def parse_msg(*msg):
 
     types = [COMMA]
     message = []
-
     for atom in msg:
         for match, apply, byte_type in parse_funx:
             if match(atom):
                 types.append(byte_type)
                 message.extend(apply(atom))
-
     with_nulls_msg = append_null(types)
     with_nulls_msg.extend(message)
     return with_nulls_msg
@@ -92,13 +90,11 @@ def parse_address(st):
 
     try:
         address = '(^/{1}[a-zA-Z0-9]+)(/?[a-zA-Z0-9]+)(/?[a-zA-Z0-9]+$)'
-
         if re.search(address, st):
             return string_to_bytes(st)
         else:
             return '''address is not well formed, probably slash symbol (/)
             is not present or it's not in the right place'''
-
     except TypeError as e:
         return e
 
