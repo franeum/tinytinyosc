@@ -2,6 +2,12 @@ import re
 import struct
 
 
+COMMA = ord(',')
+TYPE_INT = ord('i')
+TYPE_FLOAT = ord('f')
+TYPE_STRING = ord('s')
+
+
 # TODO: verifying recursion opportunity
 def add_null(cs):
     if len(cs) % 4 == 0:
@@ -21,10 +27,18 @@ def add_null(cs):
     return cs"""
 
 
+def match_int(n):
+    return type(n) == int
+
+
 def int_to_bytes(n):
     conv = struct.pack('>i', n)
     conv = struct.unpack('>BBBB', conv)
     return list(conv)
+
+
+def match_float(n):
+    return type(n) == float
 
 
 def float_to_bytes(f):
@@ -33,27 +47,32 @@ def float_to_bytes(f):
     return list(conv)
 
 
+def match_string(n):
+    return type(n) == string
+
+
 def string_to_bytes(s):
     conv = [ord(c) for c in s]
     conv.append(0)
     return add_null(conv)
 
 
-COMMA = ord(',')
-TYPE_INT = ord('i')
-TYPE_FLOAT = ord('f')
-TYPE_STRING = ord('s')
+parse_funx = ((match_int, int_to_bytes), (match_float, float_to_bytes),
+              (match_string, string_to_bytes))
 
-tps = (int, float, str)
+'''tps = (int, float, str)
 tps_symbols = (TYPE_INT, TYPE_FLOAT, TYPE_STRING)
 ass = [x for x in zip(tps, tps_symbols)]
-print(ass)
+print(ass)'''
 
 
 def parse_msg(*msg):
     types = [COMMA]
     for atom in msg:
-        for rule, compare in ass:
+        for match, apply in parse_funx:
+            if match(atom):
+                print(apply)
+                apply(atom)
 
 
 '''def parse_msg(*msg):
