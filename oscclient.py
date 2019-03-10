@@ -46,3 +46,9 @@ class TinyOSCClient:
 
     def sendto(self, msg):
         self.sock.sendto(msg, self.addr)
+
+
+class TinyOSCMessage:
+
+    def __init__(self, address):
+        pass
