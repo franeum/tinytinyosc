@@ -1,12 +1,11 @@
 import parsemessage
-import socket
+from oscclient import TinyOSCClient
 
-address = ('127.0.0.1', 5005)
+host = '127.0.0.1'
+port = 5005
+msg = parsemessage.build_whole_mess('/ciao/1/mbuto', 'bang')
 
-msg = parsemessage.build_whole_mess('/ciao', 'bang')
-
-sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-
-sock.sendto(bytes(msg), address)
-
+sock = TinyOSCClient(host, port)
+sock.connect()
+sock.send(bytes(msg))
 sock.close()
