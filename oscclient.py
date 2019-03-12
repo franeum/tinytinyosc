@@ -1,5 +1,5 @@
 import socket
-from oscargument import *
+from tinytinyosc import *
 
 
 class TinyOSCClient:
