@@ -48,7 +48,3 @@ class OSCMessage:
 class OSCPacket:
     def __init__(self):
         pass
-
-
-# a = OSCMessage('/ciao', 1, 2, 3, 'cacca')
-# print(a.get_msg())
