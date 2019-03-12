@@ -80,6 +80,7 @@ def parse_msg(*msg):
             if match(atom):
                 types.append(byte_type)
                 message.extend(apply(atom))
+    types.append(0)
     with_nulls_msg = append_null(types)
     with_nulls_msg.extend(message)
     return with_nulls_msg
