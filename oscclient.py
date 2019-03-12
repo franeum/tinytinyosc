@@ -1,8 +1,8 @@
 import socket
+from oscargument import *
 
 
 class TinyOSCClient:
-
     def __init__(self, host='127.0.0.1', port=7000, protocol='udp'):
         self.host = host
         self.port = port
@@ -41,14 +41,11 @@ class TinyOSCClient:
         self.sock.close()
         return 1
 
-    def send(self, msg):
-        self.sock.sendall(msg)
+    def send(self, address, *msg):
+        mess = OSCMessage(address, *msg)
+        mess = mess.get_msg()
+        # print(mess)
+        self.sock.sendall(bytes(mess))
 
     def sendto(self, msg):
         self.sock.sendto(msg, self.addr)
-
-
-class TinyOSCMessage:
-
-    def __init__(self, address):
-        pass
