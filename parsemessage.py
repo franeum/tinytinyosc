@@ -11,7 +11,6 @@ TYPE_STRING = ord('s')
 # TODO: verifying recursion opportunity
 def append_null(cs):
     '''append null values at the end of a string'''
-
     if len(cs) % 4 == 0:
         return cs
     else:
@@ -35,7 +34,6 @@ def match_int(n):
 
 def int_to_bytes(n):
     '''convert int to bytes (big endian)'''
-
     conv = struct.pack('>i', n)
     conv = struct.unpack('>BBBB', conv)
     return list(conv)
@@ -47,7 +45,6 @@ def match_float(n):
 
 def float_to_bytes(f):
     '''convert float to bytes (big endian)'''
-
     conv = struct.pack('>f', f)
     conv = struct.unpack('>BBBB', conv)
     return list(conv)
@@ -59,7 +56,6 @@ def match_string(n):
 
 def string_to_bytes(s):
     '''convert string to bytes (big endian)'''
-
     conv = [ord(c) for c in s]
     conv.append(0)
     return append_null(conv)
@@ -72,7 +68,6 @@ parse_funx = ((match_int, int_to_bytes, TYPE_INT),
 
 def parse_msg(*msg):
     '''parse message arguments and convert them in bytes'''
-
     types = [COMMA]
     message = []
     for atom in msg:
@@ -88,7 +83,6 @@ def parse_msg(*msg):
 
 def parse_address(st):
     '''parse address and convert it in bytes'''
-
     try:
         address = '(^/{1}[a-zA-Z0-9]+)(/?[a-zA-Z0-9]+)(/?[a-zA-Z0-9]+$)'
         if re.search(address, st):
@@ -102,7 +96,6 @@ def parse_address(st):
 
 def build_whole_mess(address, *msg):
     '''build whole message and prepare it to send'''
-
     address_bytes = parse_address(address)
     types = parse_msg(*msg)
     return address_bytes + types
