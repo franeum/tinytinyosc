@@ -44,7 +44,6 @@ class TinyOSCClient:
     def send(self, address, *msg):
         mess = OSCMessage(address, *msg)
         mess = mess.get_msg()
-        # print(mess)
         self.sock.sendall(bytes(mess))
 
     def sendto(self, msg):
