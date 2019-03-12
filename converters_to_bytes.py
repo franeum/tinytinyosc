@@ -64,38 +64,3 @@ def string_to_bytes(s):
 parse_funx = ((match_int, int_to_bytes, TYPE_INT),
               (match_float, float_to_bytes, TYPE_FLOAT),
               (match_string, string_to_bytes, TYPE_STRING))
-
-
-def parse_msg(*msg):
-    '''parse message arguments and convert them in bytes'''
-    types = [COMMA]
-    message = []
-    for atom in msg:
-        for match, apply, byte_type in parse_funx:
-            if match(atom):
-                types.append(byte_type)
-                message.extend(apply(atom))
-    types.append(0)
-    with_nulls_msg = append_null(types)
-    with_nulls_msg.extend(message)
-    return with_nulls_msg
-
-
-def parse_address(st):
-    '''parse address and convert it in bytes'''
-    try:
-        address = '(^/{1}[a-zA-Z0-9]+)(/?[a-zA-Z0-9]+)(/?[a-zA-Z0-9]+$)'
-        if re.search(address, st):
-            return string_to_bytes(st)
-        else:
-            return '''address is not well formed, probably slash symbol (/)
-            is not present or it's not in the right place'''
-    except TypeError as e:
-        return e
-
-
-def build_whole_mess(address, *msg):
-    '''build whole message and prepare it to send'''
-    address_bytes = parse_address(address)
-    types = parse_msg(*msg)
-    return address_bytes + types
