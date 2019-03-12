@@ -1,4 +1,0 @@
-[Customer|-forname:string;surname:string|doShiz()]<>-orders*>[Order]
-[Order]++-0..*>[LineItem]
-[Order]-[note:Aggregate root{bg:wheat}]
-[Client|host:string;port:int]
