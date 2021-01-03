@@ -6,6 +6,9 @@ portable version of MEEG system
 2. Scaricare e scompattare il sistema `meeg` pre-configurato da [qui](https://u.pcloud.link/publink/show?code=XZYXTQXZQMRG370Ls6S0p9oU6Y8HWbjpeb5V)
 3. Copiare la sottocartella `meeg` che si trova nella cartella appena scompattata e posizionarlo in `/Applicazioni/AMPPS/www`
 4. Aprire l'applicazione `Ampps.app` che si trova in `/Applicazioni/AMPPS`; comparirà una finestra con 3 componenti attive (*running*): `Apache`, `PHP` e `MyAQL`. Tutte e 3 le componenti **devono** essere attive, se non lo sono andare al punto 1 della sezione [Troubleshooting](#troubleshooting).
+  <p align="center">
+    <img src="https://raw.githubusercontent.com/franeum/tinytinyosc/master/meeg_install/fig1_ampps.png" alt="drawing" width="300"/>
+  </p>
 5. Verificare la versione di PHP, che dovrebbe essere la 7.1 (o qualcosa del genere). A noi serve la versione 5.4, quindi bisogna installarla e attivarla. Per fare ciò andare, in `ampps`, su `option`, cioè l'icona più a sinistra fra le 4 disponibili nella finestra. Da lì andare su `change php version`; si aprirà una nuova finestra con alcune versioni di PHP disponibili. La versione 5.4 è `disattiva`, significa che va installata. Fare click su `PHP 5.4` e seguire i passaggi dell'installazione. Dopo l'installazione attivare PHP 5.4.
 6. A questo punto dovremmo avere Apache, PHP 5.4 e MySQL attivi e con le versioni giuste. Fare click sulla finestra `HOME` (la terza icona) in modo da aprire nel browser il `pannello di controllo` del server, in cui compaiono una serie di applicazioni identificate da relative icone.
 7. Aprire l'applicazione `phpMyAdmin`, che permette di gestire il database.
@@ -21,8 +24,3 @@ portable version of MEEG system
    * Dall'icona di `ampps` vicino all'orologio premere su `Stop`
    * Aprire `Monitoraggio Attività` del Mac e cercare eventuali servizi attivi attinenti a: php, apache, httpd e mysql(d). Se ci sono, ucciderli (uno ad uno) selezionandoli e andando sulla `x` in alto a sinistra.
    * Riaprire `Ampps.app` e verificare che tutto funzioni.  
-
-
-<p align="center">
-  <img src="https://raw.githubusercontent.com/franeum/rockpis_for_audio/master/immagini/rockpis_audio_interface.png" alt="drawing" width="300"/>
-</p>
