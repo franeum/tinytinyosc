@@ -15,14 +15,34 @@ portable version of MEEG system
 6. A questo punto dovremmo avere Apache, PHP 5.4 e MySQL attivi e con le versioni giuste. Fare click sulla finestra `HOME` (la terza icona) in modo da aprire nel browser il `pannello di controllo` del server, in cui compaiono una serie di applicazioni identificate da relative icone.
 
   <p align="center">
-    <img src="https://raw.githubusercontent.com/franeum/tinytinyosc/master/meeg_install/fig2_dashboard.png" alt="drawing" width="300"/>
+    <img src="https://raw.githubusercontent.com/franeum/tinytinyosc/master/meeg_install/fig2_dashboard.png" alt="drawing" width="900"/>
   </p>
 
 7. Aprire l'applicazione `phpMyAdmin`, che permette di gestire il database.
+
+  <p align="center">
+    <img src="https://raw.githubusercontent.com/franeum/tinytinyosc/master/meeg_install/fig3_phpmyadmin.png" alt="drawing" width="900"/>
+  </p>
+
 8. Nella finestra di `phpMyAdmin` andare su `Utenti` (mi riferisco alla versione italiana, ma è tutto facilmente intuibile anche in inglese). Premere su `aggiungi utente`.
+
+  <p align="center">
+    <img src="https://raw.githubusercontent.com/franeum/tinytinyosc/master/meeg_install/fig4_utenti.png" alt="drawing" width="900"/>
+  </p>
+
 9.  Nella nuova finestra inserire il nome utente: `antonio` e la password `francesco`. Poi nella sezione in basso, su `Privilegi globali` premere su `seleziona tutti`. Infine premere, in basso a sinistra, su `Esegui`.
+
+  <p align="center">
+    <img src="https://raw.githubusercontent.com/franeum/tinytinyosc/master/meeg_install/fig5_nuovoutente.png" alt="drawing" width="900"/>
+  </p>
+
 10. Tornare alla finestra del `pannello di controllo`, quello che avevamo aperto al punto (7) e aprire l'applicazione `add Domain`
 11. In corrispondenza della voce `Domain` scrivere `my.meeg`, mentre in `Domain Path` scrivere: `/Applications/AMPPS/www/`, quindi premere `Add Domain`
+
+  <p align="center">
+    <img src="https://raw.githubusercontent.com/franeum/tinytinyosc/master/meeg_install/fig6_domain.png" alt="drawing" width="900"/>
+  </p>
+
 12. A questo punto la configurazione è terminata. Andare sull'icona di `ampps` in alto (vicino all'orologio) e dal menu a tendina che si apre al click del mouse andare su `Restart`. Attendere qualche secondo.
 13. Aprire una nuova finestra del browser e scrivere nella barra degli indirizzi: `my.meeg`, se tutto funziona dovrebbe aprirsi l'interfaccia del sistema MEEG perfettamente funzionante.
 
