@@ -30,7 +30,7 @@ portable version of MEEG system
     <img src="https://raw.githubusercontent.com/franeum/tinytinyosc/master/meeg_install/fig4_utenti.png" alt="drawing" width="900"/>
   </p>
 
-9.  Nella nuova finestra inserire il nome utente: `antonio` e la password `francesco`. Poi nella sezione in basso, su `Privilegi globali` premere su `seleziona tutti`. Infine premere, in basso a sinistra, su `Esegui`.
+9.  Nella nuova finestra inserire il nome utente: `antonio` e la password `francesco`. Inserire `localhost` nella sezione `host` (host locale). Nella sezione in basso, su `Privilegi globali` premere su `seleziona tutti`. Infine premere, in basso a sinistra, su `Esegui`.
 
   <p align="center">
     <img src="https://raw.githubusercontent.com/franeum/tinytinyosc/master/meeg_install/fig5_nuovoutente.png" alt="drawing" width="900"/>
