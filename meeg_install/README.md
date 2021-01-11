@@ -51,3 +51,5 @@ portable version of MEEG system
    * Dall'icona di `ampps` vicino all'orologio premere su `Stop`
    * Aprire `Monitoraggio Attività` del Mac e cercare eventuali servizi attivi attinenti a: php, apache, httpd e mysql(d). Se ci sono, ucciderli (uno ad uno) selezionandoli e andando sulla `x` in alto a sinistra.
    * Riaprire `Ampps.app` e verificare che tutto funzioni.  
+
+2. Nel server è utilizzata una funzione deprecata: la funzione `ereg_replace` deve essere sostituita dalla funzione `preg_replace` e il primo argomento deve essere *delimitato* dal simbolo **#**. Ad esempio `ereg_replace("foo")` diventa `preg_replace("#foo#")`. Una prima occorrenza di tale funzione si trova nel file `$SERVER/meeg/www/frames/menuframe.php`, alla riga 220.
